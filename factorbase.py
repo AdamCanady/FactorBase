@@ -50,7 +50,7 @@ def factor_base(n, quad_sieve = False):
         prime_list = pick_prime_list(number_of_primes)
         if quad_sieve:
             prime_list = filter(lambda x: x in [-1, 2] or legendre_symbol(n, x) != -1, prime_list)
-        print "primes list", prime_list
+        #print "primes list", prime_list
         b_candidates = pick_candidates(2000)
         
         #print "prime_list:", prime_list
@@ -92,9 +92,10 @@ def factor_base(n, quad_sieve = False):
                     b_smooth.append((b, b_factors))
                 
         print "b_smooth:", b_smooth
-        print "len bsmooth", len(b_smooth)
+        #print "len bsmooth", len(b_smooth)
     
         A = Matrix(GF(2), [[(1 if factor in b_factors else 0) for factor in prime_list] for (b, b_factors) in b_smooth])
+        print A
     
         A_transpose = A.transpose()
     
